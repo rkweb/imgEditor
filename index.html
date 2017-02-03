@@ -1,0 +1,48 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>imgeditor</title>
+    <meta name="description" content=""/>
+    <meta name="viewport" content="width=640, target-densitydpi=device-dpi, user-scalable=no"/>
+    <script src="http://go.163.com/2015/public/common/js/zepto.min.js"></script>
+    <script src="js/gesturer.js"></script>
+    <script src="js/imgeditor.js"></script>
+    <style>
+        *{margin:0;padding: 0;}
+    </style>
+</head>
+<body>
+<canvas id="canvas" width="300px" height="400px"></canvas>
+<button id="btn">合成</button>
+<img src="" class="img" alt="">
+<script>
+    document.addEventListener('body', function (ev) {
+        ev.preventDefault();
+    });
+    var imgeditor = new ImgEditor({
+        el: document.getElementById('canvas'),
+        color: 'transparent'
+    });
+    var gesture = new Gesturer({
+        el: document.getElementById('canvas'),
+        onPressMove: function (evt) {
+            imgeditor.onMove(evt);
+        },
+        onPinch: function (evt) {
+            imgeditor.onPinch(evt);
+        },
+        onRotate: function (evt) {
+            imgeditor.onRotate(evt);
+        },
+    });
+
+    gesture.on();
+    imgeditor.setImg('img.jpg');
+    $('#btn').click(function(){
+        $('.img').attr("src", imgeditor.getImg());
+    });
+</script>
+</body>
+</html>
