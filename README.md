@@ -17,7 +17,7 @@ demo：[http://test.go.163.com/go/2015/public/team/renke/imgeditor/index.html](h
     		color: 'transparent'
    		});
     	var gesture = new Gesturer({
-    		el: document.getElementById('canvas'),
+    		el: document.getElementById('canvas'), 
     		onPressMove: function (evt) {
    	 			imgeditor.onMove(evt);
     		},
@@ -29,11 +29,11 @@ demo：[http://test.go.163.com/go/2015/public/team/renke/imgeditor/index.html](h
     		},
     	});
     
-    	gesture.on();
-   		imgeditor.setImg('img.jpg');
+    	gesture.on(); // 开启手势事件
+   		imgeditor.setImg('img.jpg'); //绘制图片
 
     	$('#btn').click(function(){
-    		$('.img').attr("src", imgeditor.getImg());
+    		$('.img').attr("src", imgeditor.getImg()); // imgeditor.getImg() 返回图片base64
     	});
     </script>
 
